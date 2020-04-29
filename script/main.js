@@ -63,6 +63,7 @@ $(document).ready(function() {
 
   // Funzione che stampa le festività del mese
   function printHolidays(date) {
+    // Referenza API
     var myAPI = 'https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0'
     // chiamo API
     $.ajax({
@@ -74,12 +75,13 @@ $(document).ready(function() {
       },
       success: function(result) {
         var holidays = result.response;
-
+        // ciclo per stampare le festività
         for ( var i = 0; i < holidays.length; i++) {
+          // oggetti di holidays
           var thisHoliday = holidays[i];
-
+          // assegno data attribute ai li
           var listItem = $('li[data-complete-date="' + thisHoliday.date + '"]');
-
+          // se è una festività assegno la classe .holiday e stampo
           if ( listItem ) {
             listItem.addClass('holiday');
             listItem.text( listItem.text() + ' - ' + thisHoliday.name );
