@@ -8,4 +8,55 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* General container */
+#app {
+  width: 1170px;
+  height: 95%;
+  background-color: lightslategrey;
+}
+
+/* Calendar Title */
+h1 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* Calendar */
+.calendar {
+  width: 100%;
+  flex-grow: 1;
+  background-color: lightgreen;
+}
+
+.month {
+  text-align: center;
+}
+
+.month-list {
+  flex-grow: 1;
+  list-style: none;
+  background-color: lightsalmon;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.month-list li {
+  width: calc(100% / 7);
+  height: calc(100% / 7);
+  border: 1px solid lightsalmon;
+  background-color: lightseagreen;
+}
+
+/* Utilities */
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
