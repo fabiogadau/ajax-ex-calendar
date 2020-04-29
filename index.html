@@ -11,14 +11,23 @@
 </head>
 <body>
   
+  <!-- General container -->
   <div id="app" class="flex-column">
-    <h1>Calendar</h1>
+    <!-- Calendar title -->
+    <h1 class="text-center">Calendar</h1>
+    <!-- Calendar -->
     <div class="calendar flex-column">
-      <h2 class="month"></h2>
+      <h2 class="month text-center"></h2>
       <ul class="month-days"></ul>
     </div>
   </div>
 
+  <!-- Template Handlebars -->
+  <script id="day-template" type="text/x-handlebars-template">
+    <li class="{{ dayClass }}" data-complete-date="{{ completeDate }}">
+      {{ day }}
+    </li>
+  </script>
 
   <!-- JS -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js'></script>

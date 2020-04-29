@@ -23,9 +23,8 @@ body {
   background-color: lightslategrey;
 }
 
-/* Calendar Title */
+/* Calendar title */
 h1 {
-  text-align: center;
   margin: 10px 0;
 }
 
@@ -36,10 +35,7 @@ h1 {
   background-color: lightgreen;
 }
 
-.month {
-  text-align: center;
-}
-
+/* Month days */
 .month-days {
   flex-grow: 1;
   list-style: none;
@@ -48,6 +44,7 @@ h1 {
   flex-wrap: wrap;
 }
 
+/* Day */
 .month-days li {
   width: calc(100% / 7);
   height: calc(100% / 7);
@@ -59,4 +56,12 @@ h1 {
 .flex-column {
   display: flex;
   flex-direction: column;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.holiday {
+  color: tomato;
 }
