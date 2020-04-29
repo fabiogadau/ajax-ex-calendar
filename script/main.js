@@ -15,6 +15,8 @@ $(document).ready(function() {
   // Referenze
   var monthName = $('.month');
   var monthDays = $('.month-days');
+  var prev = $('.prev');
+  var next = $('.next');
 
   // Init Handlebars
   var source = $('#day-template').html();
@@ -28,6 +30,40 @@ $(document).ready(function() {
   printMonthDays(baseMonth);
   // Invoco funzione che stampa le festività del mese
   printHolidays(baseMonth);
+
+  // Al click dell'icona viene visualizzato il mese precedente
+  prev.click(function() {
+    // validazione
+    if ( baseMonth.month() == 0 ) {
+      alert('Non puoi tornare indietro nel tempo!');
+    }
+    else {
+      // torno indietro di un mese, lo visualizzo e nascondo gli altri
+      baseMonth.subtract(1, 'M');
+      monthDays.children().hide();
+      // funzione con la quale stampo i giorni
+      printMonthDays(baseMonth);
+      // funzione con la quale stampo le festività
+      printHolidays(baseMonth);
+    }
+  });
+
+  // Al click dell'icona viene visualizzato il mese successivo
+  next.click(function() {
+    // validazione
+    if ( baseMonth.month() == 11 ) {
+      alert('Non puoi viaggiare nel futuro!');
+    }
+    else {
+      // vado avanti di un mese, lo visualizzo e nascondo gli altri
+      baseMonth.add(1, 'M');
+      monthDays.children().hide();
+      // funzione con la quale stampo i giorni
+      printMonthDays(baseMonth);
+      // funzione con la quale stampo le festività
+      printHolidays(baseMonth);
+    }
+  });
 
 
   /**************

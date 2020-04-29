@@ -24,8 +24,22 @@ body {
 }
 
 /* Calendar title */
+.calendar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 h1 {
   margin: 10px 0;
+}
+
+.prev {
+  margin-left: 20px;
+}
+
+.next {
+  margin-right: 20px;
 }
 
 /* Calendar */
@@ -60,6 +74,10 @@ h1 {
 
 .text-center {
   text-align: center;
+}
+
+.font-s-30 {
+  font-size: 30px;
 }
 
 .holiday {
