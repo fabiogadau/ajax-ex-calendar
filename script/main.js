@@ -32,36 +32,28 @@ $(document).ready(function() {
   printHolidays(baseMonth);
 
   // Al click dell'icona viene visualizzato il mese precedente
-  prev.click(function() {
-    // validazione
-    if ( baseMonth.month() == 0 ) {
-      alert('Non puoi tornare indietro nel tempo!');
-    }
-    else {
-      // torno indietro di un mese, lo visualizzo e nascondo gli altri
-      baseMonth.subtract(1, 'M');
-      monthDays.children().hide();
-      // funzione con la quale stampo i giorni
-      printMonthDays(baseMonth);
-      // funzione con la quale stampo le festività
-      printHolidays(baseMonth);
-    }
+  prev.click(function(){
+    // invoco funzione che stampa il mese precedente
+    printPreviousMonth();
   });
 
   // Al click dell'icona viene visualizzato il mese successivo
-  next.click(function() {
-    // validazione
-    if ( baseMonth.month() == 11 ) {
-      alert('Non puoi viaggiare nel futuro!');
+  next.click(function(){
+    // invoco funzione che stampa il mese successivo
+    printFollowingMonth();
+  });
+
+  // Navigazione con tastiera
+  $(document).keyup(function(event){
+    // tasto destra
+    if ( event.which == 37 || event.keyCode == 37 ) {
+      // invoco funzione che stampa il mese precedente
+      printPreviousMonth();
     }
-    else {
-      // vado avanti di un mese, lo visualizzo e nascondo gli altri
-      baseMonth.add(1, 'M');
-      monthDays.children().hide();
-      // funzione con la quale stampo i giorni
-      printMonthDays(baseMonth);
-      // funzione con la quale stampo le festività
-      printHolidays(baseMonth);
+    // tasto sinistra
+    else if ( event.which == 39 || event.keyCode == 39 ) {
+      // invoco funzione che stampa il mese successivo
+      printFollowingMonth();
     }
   });
 
@@ -70,7 +62,7 @@ $(document).ready(function() {
   * FUNZIONI  
   **************/
   // Funzione che stampa a schermo i giorni del mese
-  function printMonthDays(data) {
+  function printMonthDays(data){
     // numero di giorni del mese
     var daysInMonth = data.daysInMonth();
     // imposto il nome del mese
@@ -98,7 +90,7 @@ $(document).ready(function() {
   };
 
   // Funzione che stampa le festività del mese
-  function printHolidays(date) {
+  function printHolidays(date){
     // Referenza API
     var myAPI = 'https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0'
     // chiamo API
@@ -109,7 +101,7 @@ $(document).ready(function() {
         year: date.year(),
         month: date.month()
       },
-      success: function(result) {
+      success: function(result){
         var holidays = result.response;
         // ciclo per stampare le festività
         for ( var i = 0; i < holidays.length; i++) {
@@ -124,10 +116,44 @@ $(document).ready(function() {
           }
         }
       },
-      error: function() {
+      error: function(){
         console.log('Errore');
       }
     });
+  };
+
+  // Funzione che stampa il mese precedente
+  function printPreviousMonth(){
+    // validazione per non andare oltre
+    if ( baseMonth.month() == 0 ) {
+      alert('Non puoi tornare indietro nel tempo!');
+    }
+    else {
+      // torno indietro di un mese, lo visualizzo e nascondo gli altri
+      baseMonth.subtract(1, 'M');
+      monthDays.children().remove();
+      // funzione con la quale stampo i giorni
+      printMonthDays(baseMonth);
+      // funzione con la quale stampo le festività
+      printHolidays(baseMonth);
+    }
+  };
+
+  // Funzione che stampa il mese successivo
+  function printFollowingMonth(){
+    // validazione per non andare oltre
+    if ( baseMonth.month() == 11 ) {
+      alert('Non puoi viaggiare nel futuro!');
+    }
+    else {
+      // vado avanti di un mese, lo visualizzo e nascondo gli altri
+      baseMonth.add(1, 'M');
+      monthDays.children().remove();
+      // funzione con la quale stampo i giorni
+      printMonthDays(baseMonth);
+      // funzione con la quale stampo le festività
+      printHolidays(baseMonth);
+    }
   };
 
 });
