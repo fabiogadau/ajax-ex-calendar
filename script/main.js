@@ -18,6 +18,24 @@ $(document).ready(function() {
   var prev = $('.prev');
   var next = $('.next');
 
+  var darkMode = $('.btn-dark');
+  var lightMode = $('.btn-light');
+  var body = $('body');
+
+  darkMode.click(function(){
+    body.removeClass('light-background');
+    body.addClass('dark-background');
+    $('.month-days li').removeClass('month-days_light-background');
+    $('.month-days li').addClass('month-days_dark-background');
+  });
+
+  lightMode.click(function(){
+    body.removeClass('dark-background');
+    body.addClass('light-background');
+    $('.month-days li').removeClass('month-days_dark-background');
+    $('.month-days li').addClass('month-days_light-background');
+  });
+
   // Init Handlebars
   var source = $('#day-template').html();
   var template = Handlebars.compile(source);
