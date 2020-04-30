@@ -50,7 +50,7 @@ h1 {
 
 .prev:hover,
 .next:hover {
-  color: tomato;
+  color: #ff5a5a;
 }
 
 /* Calendar */
@@ -83,7 +83,7 @@ h1 {
   height: 100px;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid  #f5a745;
+  border: 1px solid #f5a745;
   background-color: teal;
 }
 
@@ -105,8 +105,10 @@ h1 {
   cursor: pointer;
 }
 
-.holiday {
-  color: tomato;
+.month-days li.holiday {
+  color: #f5a745;
+  background-color: #ff5a5a;
+  font-weight: 700;
 }
 
 /* Color options */
