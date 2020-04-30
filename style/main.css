@@ -10,7 +10,10 @@ body {
   font-size: 16px;
   width: 100vw;
   height: 100vh;
-  background-color: #fff;
+  background: linear-gradient(
+    90deg, 
+    rgba(255,255,255,1) 0%, 
+    rgba(167,233,227,1) 50%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,9 +21,9 @@ body {
 
 /* General container */
 #app {
-  width: 1170px;
-  height: 95%;
-  background-color: lightslategrey;
+  max-width: 1170px;
+  min-height: 80%;
+  max-height: 95%;
 }
 
 /* Calendar title */
@@ -32,6 +35,7 @@ body {
 
 h1 {
   margin: 10px 0;
+  color:  #f5a745;
 }
 
 .prev {
@@ -42,18 +46,36 @@ h1 {
   margin-right: 20px;
 }
 
+.prev,
+.next {
+  color: #f5a745;
+}
+
+.prev:hover,
+.next:hover {
+  color: tomato;
+}
+
 /* Calendar */
 .calendar {
   width: 100%;
   flex-grow: 1;
-  background-color: lightgreen;
+}
+
+/* Month name */
+.month {
+  color: #fff;
+}
+
+.month::first-letter {
+  color: #f5a745;
 }
 
 /* Month days */
 .month-days {
   flex-grow: 1;
   list-style: none;
-  background-color: lightsalmon;
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -61,9 +83,11 @@ h1 {
 /* Day */
 .month-days li {
   width: calc(100% / 7);
-  height: calc(100% / 7);
-  border: 1px solid lightsalmon;
-  background-color: lightseagreen;
+  height: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid  #f5a745;
+  background-color: #57c3b9;
 }
 
 /* Utilities */
@@ -76,8 +100,12 @@ h1 {
   text-align: center;
 }
 
-.font-s-30 {
-  font-size: 30px;
+.font-s-40 {
+  font-size: 40px;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .holiday {
