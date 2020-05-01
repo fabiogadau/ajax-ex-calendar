@@ -70,7 +70,6 @@ h1 {
 
 /* Month days */
 .month-days {
-  flex-grow: 1;
   list-style: none;
   margin-top: 10px;
   display: flex;

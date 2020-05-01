@@ -64,20 +64,8 @@ $(document).ready(function() {
     }
   });
 
-  // Possibilità di cambiare colori alla pagina
-  darkMode.click(function(){
-    body.removeClass('light-background');
-    body.addClass('dark-background');
-    $('.month-days li').removeClass('month-days_light-background');
-    $('.month-days li').addClass('month-days_dark-background');
-  });
-
-  lightMode.click(function(){
-    body.removeClass('dark-background');
-    body.addClass('light-background');
-    $('.month-days li').removeClass('month-days_dark-background');
-    $('.month-days li').addClass('month-days_light-background');
-  });
+  // Invoco funzione per possibilità di cambiare colori alla pagina
+  changeColors();
 
 
   /**************
@@ -176,6 +164,31 @@ $(document).ready(function() {
       // funzione con la quale stampo le festività
       printHolidays(baseMonth);
     }
+  };
+
+  // Funzione che cambia colori alla pagina
+  function changeColors(){
+    // Al click del bottone corrispondente si attiva la Dark mode
+    darkMode.click(function(){
+      body.removeClass('light-background');
+      body.addClass('dark-background');
+      $('.month-days li').removeClass('month-days_light-background');
+      $('.month-days li').addClass('month-days_dark-background');
+      if ( $('.month-days li').hasClass('holiday') ) {
+        $('.month-days li').removeClass('month-days_dark-background');
+      }
+    });
+  
+    // Al click del bottone corrispondente si attiva la Light mode
+    lightMode.click(function(){
+      body.removeClass('dark-background');
+      body.addClass('light-background');
+      $('.month-days li').removeClass('month-days_dark-background');
+      $('.month-days li').addClass('month-days_light-background');
+      if ( $('.month-days li').hasClass('holiday') ) {
+        $('.month-days li').removeClass('month-days_light-background');
+      }
+    });
   };
 
 });
