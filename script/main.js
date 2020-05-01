@@ -32,6 +32,7 @@ $(document).ready(function() {
   // Punto di partenza del calendario
   var baseMonth = moment('2018-01-01');
   console.log(baseMonth.daysInMonth());
+  console.log(baseMonth.format('dddd'));
 
   // Invoco funzione che stampa i giorni del mese
   printMonthDays(baseMonth);
@@ -146,6 +147,7 @@ $(document).ready(function() {
       printMonthDays(baseMonth);
       // funzione con la quale stampo le festività
       printHolidays(baseMonth);
+      putDaysInOrder();
     }
   };
 
@@ -163,6 +165,7 @@ $(document).ready(function() {
       printMonthDays(baseMonth);
       // funzione con la quale stampo le festività
       printHolidays(baseMonth);
+      putDaysInOrder();
     }
   };
 
@@ -189,6 +192,31 @@ $(document).ready(function() {
         $('.month-days li').removeClass('month-days_light-background');
       }
     });
+  };
+
+  // Funzione che ordina la posizione dei giorni nel calendario
+  function putDaysInOrder(){
+    if ( baseMonth.format('dddd') == 'Tuesday' ) {
+      $('.month-days li:first-child').addClass('tuesday-margin');
+    }
+    else if ( baseMonth.format('dddd') == 'Wednesday' ) {
+      $('.month-days li:first-child').addClass('wednesday-margin');
+    }
+    else if ( baseMonth.format('dddd') == 'Thursday' ) {
+      $('.month-days li:first-child').addClass('thursday-margin');
+    }
+    else if ( baseMonth.format('dddd') == 'Friday' ) {
+      $('.month-days li:first-child').addClass('friday-margin');
+    }
+    else if ( baseMonth.format('dddd') == 'Saturday' ) {
+      $('.month-days li:first-child').addClass('saturday-margin');
+    }
+    else if ( baseMonth.format('dddd') == 'Sunday' ) {
+      $('.month-days li:first-child').addClass('sunday-margin');
+    }
+    else {
+      $('.month-days li:first-child').addClass('monday-margin');
+    }
   };
 
 });

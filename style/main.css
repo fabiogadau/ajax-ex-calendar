@@ -162,3 +162,31 @@ h1 {
 .month-days li.month-days_dark-background {
   background-color: teal;
 }
+
+.month-days li:first-child.monday-margin {
+  margin-left: 0;
+}
+
+.month-days li:first-child.tuesday-margin {
+  margin-left: calc(100% / 7);
+}
+
+.month-days li:first-child.wednesday-margin {
+  margin-left: calc(100% / 3.5);
+}
+
+.month-days li:first-child.thursday-margin {
+  margin-left: calc(100% / 2.3335);
+}
+
+.month-days li:first-child.friday-margin {
+  margin-left: calc(100% / 1.75);
+}
+
+.month-days li:first-child.saturday-margin {
+  margin-left: calc(100% / 1.4);
+}
+
+.month-days li:first-child.sunday-margin {
+  margin-left: calc(100% / 1.167);
+}
