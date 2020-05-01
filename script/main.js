@@ -143,10 +143,11 @@ $(document).ready(function() {
       // torno indietro di un mese, lo visualizzo e nascondo gli altri
       baseMonth.subtract(1, 'M');
       monthDays.children().remove();
-      // funzione con la quale stampo i giorni
+      // invoco funzione che stampa i giorni
       printMonthDays(baseMonth);
-      // funzione con la quale stampo le festività
+      // invoco funzione che stampa le festività
       printHolidays(baseMonth);
+      // invoco funzione che mette in ordine i giorni
       putDaysInOrder();
     }
   };
@@ -161,10 +162,11 @@ $(document).ready(function() {
       // vado avanti di un mese, lo visualizzo e nascondo gli altri
       baseMonth.add(1, 'M');
       monthDays.children().remove();
-      // funzione con la quale stampo i giorni
+      // invoco funzione che stampa i giorni
       printMonthDays(baseMonth);
-      // funzione con la quale stampo le festività
+      // invoco funzione che stampa le festività
       printHolidays(baseMonth);
+      // invoco funzione che mette in ordine i giorni
       putDaysInOrder();
     }
   };
@@ -176,9 +178,11 @@ $(document).ready(function() {
       body.removeClass('light-background');
       body.addClass('dark-background');
       $('.month-days li').removeClass('month-days_light-background');
-      $('.month-days li').addClass('month-days_dark-background');
       if ( $('.month-days li').hasClass('holiday') ) {
         $('.month-days li').removeClass('month-days_dark-background');
+      }
+      else {
+        $('.month-days li').addClass('month-days_dark-background');
       }
     });
   
@@ -187,9 +191,11 @@ $(document).ready(function() {
       body.removeClass('dark-background');
       body.addClass('light-background');
       $('.month-days li').removeClass('month-days_dark-background');
-      $('.month-days li').addClass('month-days_light-background');
       if ( $('.month-days li').hasClass('holiday') ) {
         $('.month-days li').removeClass('month-days_light-background');
+      }
+      else {
+        $('.month-days li').addClass('month-days_light-background');
       }
     });
   };
