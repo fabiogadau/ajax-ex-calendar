@@ -31,8 +31,6 @@ $(document).ready(function() {
 
   // Punto di partenza del calendario
   var baseMonth = moment('2018-01-01');
-  console.log(baseMonth.daysInMonth());
-  console.log(baseMonth.format('dddd'));
 
   // Invoco funzione che stampa i giorni del mese
   printMonthDays(baseMonth);
@@ -177,11 +175,11 @@ $(document).ready(function() {
     darkMode.click(function(){
       body.removeClass('light-background');
       body.addClass('dark-background');
-      $('.month-days li').removeClass('month-days_light-background');
       if ( $('.month-days li').hasClass('holiday') ) {
-        $('.month-days li').removeClass('month-days_dark-background');
+        $(this).removeClass('month-days_dark-background');
       }
       else {
+        $('.month-days li').removeClass('month-days_light-background');
         $('.month-days li').addClass('month-days_dark-background');
       }
     });
@@ -190,11 +188,11 @@ $(document).ready(function() {
     lightMode.click(function(){
       body.removeClass('dark-background');
       body.addClass('light-background');
-      $('.month-days li').removeClass('month-days_dark-background');
       if ( $('.month-days li').hasClass('holiday') ) {
-        $('.month-days li').removeClass('month-days_light-background');
+        $(this).removeClass('month-days_light-background');
       }
       else {
+        $('.month-days li').removeClass('month-days_dark-background');
         $('.month-days li').addClass('month-days_light-background');
       }
     });
@@ -202,26 +200,27 @@ $(document).ready(function() {
 
   // Funzione che ordina la posizione dei giorni nel calendario
   function putDaysInOrder(){
-    if ( baseMonth.format('dddd') == 'Tuesday' ) {
-      $('.month-days li:first-child').addClass('tuesday-margin');
-    }
-    else if ( baseMonth.format('dddd') == 'Wednesday' ) {
-      $('.month-days li:first-child').addClass('wednesday-margin');
-    }
-    else if ( baseMonth.format('dddd') == 'Thursday' ) {
-      $('.month-days li:first-child').addClass('thursday-margin');
-    }
-    else if ( baseMonth.format('dddd') == 'Friday' ) {
-      $('.month-days li:first-child').addClass('friday-margin');
-    }
-    else if ( baseMonth.format('dddd') == 'Saturday' ) {
-      $('.month-days li:first-child').addClass('saturday-margin');
-    }
-    else if ( baseMonth.format('dddd') == 'Sunday' ) {
-      $('.month-days li:first-child').addClass('sunday-margin');
-    }
-    else {
-      $('.month-days li:first-child').addClass('monday-margin');
+    var firstDay = baseMonth.format('dddd');
+    var firstOfList = $('.month-days li:first-child');
+    switch (firstDay) {
+      case 'Tuesday':
+        firstOfList.addClass('tuesday-margin');
+        break;
+      case 'Wednesday':
+        firstOfList.addClass('wednesday-margin');
+        break;
+      case 'Thursday':
+        firstOfList.addClass('thursday-margin');
+        break;
+      case 'Friday':
+        firstOfList.addClass('friday-margin');
+        break;
+      case 'Saturday':
+        firstOfList.addClass('saturday-margin');
+        break;
+      case 'Sunday':
+        firstOfList.addClass('sunday-margin');
+        break;
     }
   };
 
